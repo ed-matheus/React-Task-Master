@@ -5,7 +5,7 @@ const ListToggle = ({ currentView, setCurrentView }) => {
   }
 
   return (
-    <div className="flex items-center justify-between bg-(--light-card) text-(--text-gr) rounded-full shadow-lg p-1.5">
+    <div className="flex items-center justify-between bg-(--light-card) text-gray-400 rounded-full shadow-lg p-1.5">
       <button
         type="button"
         className={`
