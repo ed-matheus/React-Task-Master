@@ -23,7 +23,7 @@ const ListToggle = ({ currentView, setCurrentView }) => {
         type="button"
         className={`
           ${currentView === 'groceries'
-            ? 'py-3 px-5 bg-(--secondary) rounded-full text-white'
+            ? 'py-3 px-5 bg-(--primary) rounded-full text-white'
             : 'py-3 px-5 rounded-full'
           }
         `}
