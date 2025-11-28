@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Componentes
 import ListToggle from './components/ListToggle'
@@ -8,6 +8,40 @@ import ItemForm from './components/ItemForm'
 
 function App() {
   const [currentView, setCurrentView] = useState('tasks')
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // Obtendo a lista do local storage
+    const itemsList = localStorage.getItem('tasksList');
+
+    // Condição: caso a lista exista, converte de string JSON para objeto JS e manda pro state
+    itemsList ? setItems(JSON.parse(itemsList)) : console.log('não existem dados guardados')
+    console.log(itemsList)
+  }, [])
+
+  const handleAddItem = (item) => {
+    const itemsObject = {
+      id: Date.now(),
+      text: item,
+      type: currentView,
+      isCompleted: false,
+    }
+
+    const newItems = [...items, itemsObject]
+    
+    // Adicionando tarefa/item no array
+    setItems(newItems)
+    console.log(newItems);
+
+    // Guardando no local storage
+    localStorage.setItem('tasksList', JSON.stringify(newItems))
+    
+    // Apagando o campo após registrar tarefa ou item
+    const itemField = document.querySelector('.task-input');
+    itemField.value = '';
+  }
+
+  const filteredItems = items.filter(item => item.type == currentView)
 
   return (
     <div className='h-full w-78 flex flex-col items-center justify-center'>
@@ -21,11 +55,19 @@ function App() {
         {/* Container do Toggle e Card de Tarefa/Item */}
         <div className='flex flex-col items-center gap-12'>
           <ListToggle currentView={currentView} setCurrentView={setCurrentView} />
-          <ItemCard currentView={currentView} />
+
+          <ul className='flex flex-col gap-4'>
+            {filteredItems.map(item => (
+              <li key={item.id}>
+                <ItemCard currentView={currentView} itemName={item.text} />
+              </li>
+            ))}
+          </ul>
+
         </div>
 
         {/* Form */}
-        <ItemForm currentView={currentView} />
+        <ItemForm currentView={currentView} handleAddItem={handleAddItem} />
       </div>
     </div>
   )

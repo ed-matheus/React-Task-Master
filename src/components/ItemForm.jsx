@@ -3,35 +3,13 @@ import { useEffect, useState } from "react";
 // Ícone
 import { FaPlus } from "react-icons/fa6";
 
-const ItemForm = ({ currentView }) => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    // Obtendo a lista do local storage
-    const itemsList = localStorage.getItem('tasksList');
-
-    // Condição: caso a lista exista, converte de string JSON para objeto JS e manda pro state
-    itemsList ? setItems(JSON.parse(itemsList)) : console.log('não existem dados guardados')
-    console.log(itemsList)
-  }, [])
-  
+const ItemForm = ({ currentView, handleAddItem }) => {  
   const getItem = (e) => {
     e.preventDefault();
 
     const item = document.querySelector('.task-input').value;
 
-    const newItems = [...items, item]
-    
-    // Adicionando tarefa/item no array
-    setItems(newItems => newItems.concat(item))
-    console.log(newItems);
-
-    // Guardando no local storage
-    localStorage.setItem('tasksList', JSON.stringify(newItems))
-    
-    // Apagando o campo após registrar tarefa ou item
-    const itemField = document.querySelector('.task-input');
-    itemField.value = '';
+    handleAddItem(item)
   }
 
   return (
