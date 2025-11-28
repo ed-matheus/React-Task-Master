@@ -43,6 +43,20 @@ function App() {
 
   const filteredItems = items.filter(item => item.type == currentView)
 
+  const handleDeleteItem = (id) => {
+    console.log(id)
+
+    const updatedItems = items.filter(item => item.id !== id)
+
+    // Atualizando na tela com useState
+    setItems(updatedItems)
+
+    // Atualizando no localStorage para persistência
+    localStorage.setItem('tasksList', JSON.stringify(updatedItems))
+
+    console.log(updatedItems)
+  }
+
   return (
     <div className='h-full w-78 flex flex-col items-center justify-center'>
       <div>
@@ -59,7 +73,7 @@ function App() {
           <ul className='flex flex-col gap-4'>
             {filteredItems.map(item => (
               <li key={item.id}>
-                <ItemCard currentView={currentView} itemName={item.text} />
+                <ItemCard currentView={currentView} itemName={item} deleteFunction={handleDeleteItem} />
               </li>
             ))}
           </ul>
