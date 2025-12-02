@@ -16,7 +16,7 @@ function App() {
 
     // Condição: caso a lista exista, converte de string JSON para objeto JS e manda pro state
     itemsList ? setItems(JSON.parse(itemsList)) : console.log('não existem dados guardados')
-    console.log(itemsList)
+    // console.log(itemsList)
   }, [])
 
   const handleAddItem = (item) => {
