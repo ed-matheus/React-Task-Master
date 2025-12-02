@@ -18,11 +18,11 @@ const ItemForm = ({ currentView, handleAddItem }) => {
 
     if (item === "") {
       itemInput.classList.add('border', 'border-red-700')
-      message.classList.toggle('hidden')      
+      message.classList.remove('hidden')      
     } else {
       handleAddItem(item)
       itemInput.classList.remove('border', 'border-red-700')
-      message.classList.toggle('hidden')   
+      message.classList.add('hidden')   
     }
 
   }
