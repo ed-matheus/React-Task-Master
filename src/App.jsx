@@ -57,6 +57,11 @@ function App() {
     // console.log(updatedItems)
   }
 
+  const clearAll = () => {
+    setItems([])
+    localStorage.setItem('tasksList', '')
+  }
+
   return (
     <div className='h-full w-78 flex flex-col items-center justify-center'>
       <div>
@@ -70,15 +75,28 @@ function App() {
         <div className='flex flex-col items-center gap-12 pb-35'>
           <ListToggle currentView={currentView} setCurrentView={setCurrentView} />
 
-          <button className='bg-white'>Excluir tudo</button>
+          <div className='flex flex-col items-center gap-5'>
+            {
+              items.length >= 1
+                ?
+                <button
+                  className='bg-red-800 text-white font-medium w-30 p-2 rounded-lg m-100 shadow-lg'
+                  onClick={() => clearAll()}
+                >
+                  Excluir tudo
+                </button>
+                :
+                ''
+            }
 
-          <ul className='flex flex-col gap-4'>
-            {filteredItems.map(item => (
-              <li key={item.id}>
-                <ItemCard currentView={currentView} itemName={item} deleteFunction={handleDeleteItem} />
-              </li>
-            ))}
-          </ul>
+            <ul className='flex flex-col gap-4'>
+              {filteredItems.map(item => (
+                <li key={item.id}>
+                  <ItemCard currentView={currentView} itemName={item} deleteFunction={handleDeleteItem} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
         </div>
 

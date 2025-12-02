@@ -54,7 +54,7 @@ const ItemCard = ({ currentView, itemName, deleteFunction }) => {
       {/* Box dropdown */}
       <div className="options hidden border border-gray-200 bg-(--light-card)/80 absolute mt-1 right-0 p-5 rounded-lg gap-2">
         <button
-          className="bg-red-700 p-2 rounded-lg flex items-center justify-center gap-1 text-white"
+          className="bg-red-800 p-2 rounded-lg flex items-center justify-center gap-1 text-white"
           onClick={() => getItemId(itemName.id)}
         >
           <MdDelete />
