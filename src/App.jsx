@@ -44,7 +44,7 @@ function App() {
   const filteredItems = items.filter(item => item.type == currentView)
 
   const handleDeleteItem = (id) => {
-    console.log(id)
+    // console.log(id)
 
     const updatedItems = items.filter(item => item.id !== id)
 
@@ -54,21 +54,23 @@ function App() {
     // Atualizando no localStorage para persistência
     localStorage.setItem('tasksList', JSON.stringify(updatedItems))
 
-    console.log(updatedItems)
+    // console.log(updatedItems)
   }
 
   return (
     <div className='h-full w-78 flex flex-col items-center justify-center'>
       <div>
-        <h2 className='font-semibold text-[1.7rem]'>TASK MASTER PRO</h2>
+        <h2 className='font-semibold text-[1.7rem]'>TASK MASTER <span className='text-(--secondary)'>PRO</span></h2>
         <h3 className='text-gray-400 font-light text-lg'>3D-Gamified Edition</h3>
       </div>
 
       {/* Conteúdo principal */}
       <div className='flex flex-col items-center justify-between gap-20 py-15 h-150'>
         {/* Container do Toggle e Card de Tarefa/Item */}
-        <div className='flex flex-col items-center gap-12'>
+        <div className='flex flex-col items-center gap-12 pb-35'>
           <ListToggle currentView={currentView} setCurrentView={setCurrentView} />
+
+          <button className='bg-white'>Excluir tudo</button>
 
           <ul className='flex flex-col gap-4'>
             {filteredItems.map(item => (

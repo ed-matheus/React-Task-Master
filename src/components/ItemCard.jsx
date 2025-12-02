@@ -1,7 +1,9 @@
 // Ícones
 import { IoCartOutline } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { FaEllipsisV } from "react-icons/fa";
 
 const ItemCard = ({ currentView, itemName, deleteFunction }) => {
 
@@ -10,8 +12,14 @@ const ItemCard = ({ currentView, itemName, deleteFunction }) => {
     deleteFunction(id)
   }
 
+  const optionsVisibility = () => {
+    const optionsBox = document.querySelector('.options')
+    optionsBox.classList.toggle('hidden')
+    optionsBox.classList.toggle('flex')
+  }
+
   return (
-    <>
+    <div className="relative">
       {currentView === 'tasks'
         ?
         <div className="bg-(--light-card) p-5 w-70 h-20 rounded-xl shadow-xl border-b-3 border-(--secondary) flex items-center justify-between gap-3">
@@ -20,16 +28,11 @@ const ItemCard = ({ currentView, itemName, deleteFunction }) => {
             <span className="font-semibold text-start break-all">{itemName.text}</span>
           </div>
           <button
-            className="bg-red-900 w-8 h-8 rounded-full flex items-center justify-center text-white"
-            onClick={() => getItemId(itemName.id)}
+            className="bg-(--secondary) w-8 h-8 rounded-full flex items-center justify-center text-white"
+            onClick={() => optionsVisibility()}
           >
-            <MdDelete />
+            <FaEllipsisV />
           </button>
-          {/* <button
-            className="bg-(--secondary) w-7 h-7 rounded-full flex items-center justify-center text-white"
-          >
-            <IoIosArrowDown />
-          </button> */}
         </div>
         :
         <div className="bg-(--light-card) p-5 w-70 h-20 rounded-xl shadow-xl border-b-3 border-(--primary) flex items-center justify-between gap-3">
@@ -39,20 +42,34 @@ const ItemCard = ({ currentView, itemName, deleteFunction }) => {
             </div>
             <span className="font-semibold text-start break-all">{itemName.text}</span>
           </div>
-          {/* <button
-            className="bg-(--primary) w-7 h-7 rounded-full flex items-center justify-center text-white"
-          >
-            <IoIosArrowDown />
-          </button> */}
           <button
-            className="bg-red-900 w-8 h-8 rounded-full flex items-center justify-center text-white"
-            onClick={() => getItemId(itemName.id)}
+            className="bg-(--primary) w-8 h-8 rounded-full flex items-center justify-center text-white"
+            onClick={() => optionsVisibility()}
           >
-            <MdDelete />
+            <FaEllipsisV />
           </button>
         </div>
       }
-    </>        
+
+      {/* Box dropdown */}
+      <div className="options hidden border border-gray-200 bg-(--light-card)/80 absolute mt-1 right-0 p-5 rounded-lg gap-2">
+        <button
+          className="bg-red-700 p-2 rounded-lg flex items-center justify-center gap-1 text-white"
+          onClick={() => getItemId(itemName.id)}
+        >
+          <MdDelete />
+          Excluir
+        </button>
+
+        <button
+          className="bg-gray-500 p-2 rounded-lg flex items-center justify-center gap-1 text-white"
+          // onClick={() => getItemId(itemName.id)}
+        >
+          <MdEdit />
+          Editar
+        </button>
+      </div>
+    </div>        
   )
 }
 

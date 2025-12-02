@@ -28,32 +28,34 @@ const ItemForm = ({ currentView, handleAddItem }) => {
   }
 
   return (
-    <form action="" className='flex items-center justify-between gap-4 relative'>
-      <input
-        type="text"
-        placeholder='Nova tarefa ou item...'
-        className={`task-input p-4 w-60 rounded-full bg-(--light-card) shadow-xl focus:outline-1 ${currentView === 'tasks' ? 'focus:outline-(--secondary)' : 'focus:outline-(--primary)'}`}
-      />
+    <div className="fixed bottom-0 w-full flex justify-center items-center bg-white/70 p-10">
+      <form action="" className='flex items-center justify-between gap-4 relative'>
+        <input
+          type="text"
+          placeholder='Nova tarefa ou item...'
+          className={`task-input p-4 w-60 rounded-full bg-(--light-card) shadow-xl focus:outline-1 ${currentView === 'tasks' ? 'focus:outline-(--secondary)' : 'focus:outline-(--primary)'}`}
+        />
 
-      <span className="message hidden absolute -bottom-9 left-15 text-md text-red-700">Vc precisa digitar algo 🤨</span>
+        <span className="message hidden absolute -bottom-7 left-15 text-md text-red-700">Vc precisa digitar algo 🤨</span>
 
-      <button
-        type="submit"
-        onClick={(e) => getItem(e)}
-        className={`${currentView === 'tasks' ? 'bg-(--secondary)' : 'bg-(--primary)'} w-10 h-10 rounded-full flex items-center justify-center`}
-      >
-        <FaPlus size={25} color={'white'} />
-      </button>
+        <button
+          type="submit"
+          onClick={(e) => getItem(e)}
+          className={`${currentView === 'tasks' ? 'bg-(--secondary)' : 'bg-(--primary)'} w-10 h-10 rounded-full flex items-center justify-center`}
+        >
+          <FaPlus size={25} color={'white'} />
+        </button>
 
-      {/* <input type="date" />
-      
-      <select name="" id="">
-        <option disabled>Escolha um horário</option>
-        <option value="">10:00</option>
-        <option value="">11:00</option>
-        <option value="">12:00</option>
-      </select> */}
-    </form>
+        {/* <input type="date" />
+        
+        <select name="" id="">
+          <option disabled>Escolha um horário</option>
+          <option value="">10:00</option>
+          <option value="">11:00</option>
+          <option value="">12:00</option>
+        </select> */}
+      </form>
+    </div>
   )
 }
 
