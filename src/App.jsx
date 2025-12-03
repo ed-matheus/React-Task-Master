@@ -58,8 +58,17 @@ function App() {
   }
 
   const clearAll = () => {
-    setItems([])
-    localStorage.setItem('tasksList', '')
+    let updatedItems = '';
+
+    if (currentView === "tasks") {
+      updatedItems = items.filter(items => items.type !== 'tasks')
+    } else {
+      updatedItems = items.filter(items => items.type !== 'groceries')
+    }
+
+    setItems(updatedItems)
+    console.log(updatedItems)
+    localStorage.setItem('tasksList', JSON.stringify(updatedItems))
   }
 
   return (
@@ -81,7 +90,7 @@ function App() {
                 ?
                 <button
                   className='bg-red-800 text-white font-medium w-30 p-2 rounded-lg shadow-lg'
-                  onClick={() => clearAll()}
+                  onClick={(currentView) => clearAll(currentView)}
                 >
                   Limpar lista
                 </button>
@@ -92,7 +101,7 @@ function App() {
             <ul className='flex flex-col gap-4'>
               {filteredItems.map(item => (
                 <li key={item.id}>
-                  <ItemCard currentView={currentView} itemName={item} deleteFunction={handleDeleteItem} />
+                  <ItemCard currentView={currentView} itemName={item} deleteFunction={handleDeleteItem} clearAllFunction={clearAll} />
                 </li>
               ))}
             </ul>
