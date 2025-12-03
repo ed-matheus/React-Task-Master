@@ -67,7 +67,7 @@ function App() {
     }
 
     setItems(updatedItems)
-    console.log(updatedItems)
+    // console.log(updatedItems)
     localStorage.setItem('tasksList', JSON.stringify(updatedItems))
   }
 
