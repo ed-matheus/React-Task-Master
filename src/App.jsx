@@ -70,7 +70,7 @@ function App() {
       </div>
 
       {/* Conteúdo principal */}
-      <div className='flex flex-col items-center justify-between gap-20 py-15 h-150'>
+      <div className='flex flex-col items-center justify-between py-15 h-150'>
         {/* Container do Toggle e Card de Tarefa/Item */}
         <div className='flex flex-col items-center gap-12 pb-35'>
           <ListToggle currentView={currentView} setCurrentView={setCurrentView} />
