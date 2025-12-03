@@ -76,8 +76,8 @@ const ItemCard = ({ currentView, itemName, deleteFunction }) => {
         className={`
           opções-comuns absolute right-0 z-1 flex border border-gray-300 bg-(--light-card)/80 mt-1 p-5 rounded-lg gap-2 w-50
           ${isMenuOpen 
-              ? 'opacity-100 translate-y-0' // Estado ATIVO: Visível e sem deslocamento
-              : 'opacity-0 -translate-y-2 pointer-events-none' // Estado INATIVO: Invisível, levemente deslocado e sem interação
+            ? 'opacity-100 translate-y-0' // Estado ATIVO: Visível e sem deslocamento
+            : 'opacity-0 -translate-y-2 pointer-events-none' // Estado INATIVO: Invisível, levemente deslocado e sem interação
           }
           transition-all duration-200 ease-out
         `}
