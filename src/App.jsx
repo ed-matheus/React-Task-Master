@@ -77,13 +77,13 @@ function App() {
 
           <div className='flex flex-col items-center gap-5'>
             {
-              items.length >= 1
+              filteredItems.length >= 1
                 ?
                 <button
                   className='bg-red-800 text-white font-medium w-30 p-2 rounded-lg m-100 shadow-lg'
                   onClick={() => clearAll()}
                 >
-                  Excluir tudo
+                  Limpar lista
                 </button>
                 :
                 ''
