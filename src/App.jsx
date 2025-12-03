@@ -80,7 +80,7 @@ function App() {
               filteredItems.length >= 1
                 ?
                 <button
-                  className='bg-red-800 text-white font-medium w-30 p-2 rounded-lg m-100 shadow-lg'
+                  className='bg-red-800 text-white font-medium w-30 p-2 rounded-lg shadow-lg'
                   onClick={() => clearAll()}
                 >
                   Limpar lista
